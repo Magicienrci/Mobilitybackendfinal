@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MissionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/missions/create', [MissionController::class, 'create'])->name('missions.create');
+Route::post('/missions/store', [MissionController::class, 'store'])->name('missions.store');
+Route::get('/get-agent-by-id', [MissionController::class, 'getAgentById']);
+Route::get('/find-agent', [MissionController::class, 'findAgent']);
